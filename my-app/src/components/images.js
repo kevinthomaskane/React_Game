@@ -2,24 +2,19 @@
 import React from "react";
 import "./images.css";
 
-const Images = props => (
- 
+const Images = props => {
+ console.log(props)
+  return (
   <div className="container">
     <div className="row">
-      <div className="col-md-3">
-      <img onClick={() => props.handlePageChange("Home")} className={props.currentPage === "Home" ? "nav-link active" : "nav-link"} src="images/butler.webp" alt="Jimmy Butler" />
-      </div>
-      <div className="col-md-3">
-      <img onClick={() => props.handlePageChange("Home")} className={props.currentPage === "Home" ? "nav-link active" : "nav-link"} src="images/butler.webp" alt="Jimmy Butler" />
-      </div>
-      <div className="col-md-3">
-      <img onClick={() => props.handlePageChange("Home")} className={props.currentPage === "Home" ? "nav-link active" : "nav-link"} src="images/butler.webp" alt="Jimmy Butler" />
-      </div>
-      <div className="col-md-3">
-      <img onClick={() => props.handlePageChange("Home")} className={props.currentPage === "Home" ? "nav-link active" : "nav-link"} src="images/butler.webp" alt="Jimmy Butler" />
+      <div className="col-md-12">
+        {props.players.map(function(element, i){
+           return <img onClick={props.handleClick} className={element.name} src={element.image} alt={element.name} />
+        })}
       </div>
     </div>
   </div>
-);
+  )
+};
 
 export default Images;

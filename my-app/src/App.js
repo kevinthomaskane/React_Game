@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from "./components/header";
 import Images from "./components/images";
-import players from "./images.json";
+import Players from "./images.json";
 
 class App extends Component {
 
   state = {
-    players: [],
+    players: Players,
     points: 0
   };
 
@@ -24,29 +24,36 @@ class App extends Component {
   };
 
     handleClick = event => {
-      var choice = event.target.name;
+      var choice = event.target.className;
       var score = this.state.points;
-      for (let i = 0; i < players.length; i++){
-        if (players[i].name === choice && players[i].selected === false){
-          players[i].selected = true
+      for (let i = 0; i < this.state.players.length; i++){
+        if (this.state.players[i].name === choice && this.state.players[i].selected === false){
+          Players[i].selected = true
           score++
+          this.checkWin();
+          this.shuffleArray(this.state.players);
         } else {
           console.log("you lose")
         }
       }
-      this.setState({players: players, points: score})
+      this.setState({players: Players, points: score})
     };
 
     checkWin = () => {
       this.state.points === 12 ? console.log("you win") : console.log("you lose")
     }
 
+    reset = () => {
+      
+    }
+
 
   render() {
+    console.log(this.state.players)
     return (
       <div>
         <Header score={this.state.points}/>
-        <Images players={this.state.players} checkWin={this.checkWin} handleClick={this.handleClick}/>
+        <Images players={this.state.players} handleClick={this.handleClick} />
       </div>
     );
   }
