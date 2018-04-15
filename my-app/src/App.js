@@ -28,28 +28,36 @@ class App extends Component {
       var score = this.state.points;
       for (let i = 0; i < this.state.players.length; i++){
         if (this.state.players[i].name === choice && this.state.players[i].selected === false){
+          console.log(this.state.players[i].selected)
           Players[i].selected = true
-          score++
+          score++ 
           this.checkWin();
-          this.shuffleArray(this.state.players);
-        } else {
-          console.log("you lose")
+        }
+        if (this.state.players[i].name === choice && this.state.players[i].selected === true){
+          console.log(this.state.players[i])
+          this.reset();
         }
       }
-      this.setState({players: Players, points: score})
+      this.setState({players: Players, points: score});
+      this.shuffleArray(this.state.players);
     };
 
     checkWin = () => {
-      this.state.points === 12 ? console.log("you win") : console.log("you lose")
-    }
+      if (this.state.points === 12){
+        alert("you win");
+        this.reset();
+      };
+    };
 
     reset = () => {
-      
-    }
+      for (let i = 0; i < Players.length; i++){
+        Players[i].selected = false;
+      };
+      this.setState({players: Players, points: 0});
+    };
 
 
   render() {
-    console.log(this.state.players)
     return (
       <div>
         <Header score={this.state.points}/>
