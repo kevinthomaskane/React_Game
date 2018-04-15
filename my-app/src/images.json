@@ -3,61 +3,73 @@
   {
     "id": 1,
     "name": "Jimmy Butler",
-    "image": "images/butler.webp"
+    "image": "images/butler.webp",
+    "selected": false
   },
   {
     "id": 2,
     "name": "Chris Paul",
-    "image": "images/cp3.webp"
+    "image": "images/cp3.webp",
+    "selected": false
   },
   {
     "id": 3,
     "name": "Steph Curry",
-    "image": "images/curry.webp"
+    "image": "images/curry.webp",
+    "selected": false
   },
   {
     "id": 4,
     "name": "Anthony Davis",
-    "image": "images/davis.webp"
+    "image": "images/davis.webp",
+    "selected": false
   },
   {
     "id": 5,
     "name": "Draymond Green",
-    "image": "images/draymond.webp"
+    "image": "images/draymond.webp",
+    "selected": false
   },
   {
     "id": 6,
     "name": "Kevin Durant",
-    "image": "iamges/durant.webp"
+    "image": "iamges/durant.webp",
+    "selected": false
   },
   {
     "id": 7,
     "name": "Giannis",
-    "image": "images/giannis.webp"
+    "image": "images/giannis.webp",
+    "selected": false
   },
   {
     "id": 8,
     "name": "James Harden",
-    "image": "images/harden.webp"
+    "image": "images/harden.webp",
+    "selected": false
   },
   {
     "id": 9,
     "name": "Kawhi Leonard",
-    "image": "images/kawhi.webp"
+    "image": "images/kawhi.webp",
+    "selected": false
   },
   {
     "id": 10,
     "name": "Lebron James",
-    "image": "images/lebron.webp"
+    "image": "images/lebron.webp",
+    "selected": false
   },
   {
     "id": 11,
     "name": "Damian Lillard",
-    "image": "images/lillard.webp"
+    "image": "images/lillard.webp",
+    "selected": false
   },
   {
     "id": 12,
     "name": "John Wall",
-    "image": "images/wall.webp"
+    "image": "images/wall.webp",
+    "selected": false
   }
 ]
