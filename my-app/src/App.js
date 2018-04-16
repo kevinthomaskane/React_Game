@@ -4,6 +4,8 @@ import Header from "./components/header";
 import Images from "./components/images";
 import Players from "./images.json";
 
+
+
 class App extends Component {
 
   state = {
@@ -26,30 +28,25 @@ class App extends Component {
     handleClick = event => {
       var choice = event.target.className;
       var score = this.state.points;
+      var player = Players.filter(function(element){
+        return element.name === choice
+      });
       for (let i = 0; i < this.state.players.length; i++){
-        if (this.state.players[i].name === choice && this.state.players[i].selected === false){
-          console.log(this.state.players[i].selected)
-          Players[i].selected = true
-          score++ 
-          this.checkWin();
-        }
-        if (this.state.players[i].name === choice && this.state.players[i].selected === true){
-          console.log(this.state.players[i])
-          this.reset();
-        }
+        let selected = this.state.players[i].selected
+        console.log(selected)
+        this.state.players[i].name === (choice && !selected) ? (Players[i].selected = true, score++, this.checkWin()) : console.log("hey there");
+        this.state.players[i].name === (choice && selected) ? (this.reset()) : console.log("keep playing");
       }
       this.setState({players: Players, points: score});
       this.shuffleArray(this.state.players);
     };
 
     checkWin = () => {
-      if (this.state.points === 12){
-        alert("you win");
-        this.reset();
-      };
+      this.state.points === 12 ? (alert("you win"), this.reset()) : console.log("keep playing")
     };
 
     reset = () => {
+      console.log("in reset")
       for (let i = 0; i < Players.length; i++){
         Players[i].selected = false;
       };
