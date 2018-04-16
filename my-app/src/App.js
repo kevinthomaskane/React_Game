@@ -28,16 +28,19 @@ class App extends Component {
     handleClick = event => {
       var choice = event.target.className;
       var score = this.state.points;
-      var player = Players.filter(function(element){
+      var player = this.state.players.filter(function(element){
         return element.name === choice
       });
-      for (let i = 0; i < this.state.players.length; i++){
-        let selected = this.state.players[i].selected
-        console.log(selected)
-        this.state.players[i].name === (choice && !selected) ? (Players[i].selected = true, score++, this.checkWin()) : console.log("hey there");
-        this.state.players[i].name === (choice && selected) ? (this.reset()) : console.log("keep playing");
-      }
-      this.setState({players: Players, points: score});
+      var newArray = this.state.players.filter(function(element){
+        return element.name !== choice
+      }).map(function(element, i){
+        return element
+      })
+      console.log(player);
+
+      player[0].selected === false ? (player[0].selected = true, newArray.push(player[0]), score++, this.checkWin()) : (alert("you lose"), this.reset());
+
+      this.setState({players: newArray, points: score});
       this.shuffleArray(this.state.players);
     };
 
@@ -47,9 +50,6 @@ class App extends Component {
 
     reset = () => {
       console.log("in reset")
-      for (let i = 0; i < Players.length; i++){
-        Players[i].selected = false;
-      };
       this.setState({players: Players, points: 0});
     };
 
