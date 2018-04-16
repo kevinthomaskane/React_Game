@@ -10,7 +10,9 @@ class App extends Component {
 
   state = {
     players: Players,
-    points: 0
+    points: 0,
+    message: "",
+    highScore: 0
   };
 
   shuffleArray = array => {
@@ -36,11 +38,8 @@ class App extends Component {
       }).map(function(element, i){
         return element
       })
-      console.log(player);
 
-      player[0].selected === false ? (player[0].selected = true, newArray.push(player[0]), score++, this.checkWin()) : (alert("you lose"), this.reset());
-
-      this.setState({players: newArray, points: score});
+      player[0].selected === false ? (player[0].selected = true, newArray.push(player[0]), score++, this.checkWin(), this.setState({players: newArray, points: score, message: "Keep Going!"}), this.getHighScore()) : this.reset();
       this.shuffleArray(this.state.players);
     };
 
@@ -48,16 +47,23 @@ class App extends Component {
       this.state.points === 12 ? (alert("you win"), this.reset()) : console.log("keep playing")
     };
 
+    getHighScore = () => {
+      var points = this.state.points
+      points >= this.state.highScore ? this.setState({highScore: points + 1}) : console.log('not high score')
+    };
+
     reset = () => {
-      console.log("in reset")
-      this.setState({players: Players, points: 0});
+      for (let i = 0; i < Players.length; i++){
+        Players[i].selected = false;
+      }
+      this.setState({players: Players, points: 0, message: "You Guessed Incorrectly"});
     };
 
 
   render() {
     return (
       <div>
-        <Header score={this.state.points}/>
+        <Header score={this.state.points} message={this.state.message} highScore={this.state.highScore} />
         <Images players={this.state.players} handleClick={this.handleClick} />
       </div>
     );
