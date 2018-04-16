@@ -39,12 +39,13 @@ class App extends Component {
         return element
       })
 
-      player[0].selected === false ? (player[0].selected = true, newArray.push(player[0]), score++, this.checkWin(), this.setState({players: newArray, points: score, message: "Keep Going!"}), this.getHighScore()) : this.reset();
+      player[0].selected === false ? (player[0].selected = true, newArray.push(player[0]), score++, this.setState({players: newArray, points: score, message: "Keep Going!"}), this.getHighScore(), this.checkWin()) : this.reset();
       this.shuffleArray(this.state.players);
     };
 
     checkWin = () => {
-      this.state.points === 12 ? (alert("you win"), this.reset()) : console.log("keep playing")
+      console.log(this.state.points)
+      this.state.points === 11 ? (alert("you win"), this.reset(), console.log('you win')) : console.log("keep playing")
     };
 
     getHighScore = () => {
