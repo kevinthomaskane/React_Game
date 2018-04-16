@@ -1,26 +1,32 @@
 import React from "react";
+import "./header.css";
 
 const Header = props => {
 
-  const styles = {
-    marginLeft: 50
+  const style = {
+    backgroundColor: "purple",
+    color: "white",
+    height: 100,
+    paddingTop: 30,
+    boxShadow: "0px 10px 10px grey" 
+
   }
 
   return (
-  <div>
-  <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-  <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div className="navbar-nav">
-      
+  <div style={style}>
+   <div className="row">
+    <div className="col-md-1"></div>
+      <div className="col-md-3">
       <h3>Score: {props.score}</h3>
-      <h3 style={styles}>{props.message}</h3>
-      <h3 style={styles}>High Score: {props.highScore}</h3>
+      </div>
+      <div className="col-md-4">
+      <h3>{props.message}</h3>
+      </div>
+      <div className="col-md-3">
+      <h3>High Score: {props.highScore}</h3>
+      </div>
+      <div className="col-md-1"></div>
     </div>
-  </div>
-</nav>
 </div>
 )
 };
